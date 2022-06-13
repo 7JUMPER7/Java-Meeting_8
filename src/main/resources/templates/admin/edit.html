@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Category</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <h1>Изменить категорию</h1>
+    <br>
+
+    <div class="container"> 
+        <form method="post" th:action="@{'/admin/editcategory/' + ${category.getId()}}" class="form">
+            <div class="mb-3">
+                <label class="form-label">Название: 
+                    <input type="text" placeholder="Название" name="name" th:value="${category.getName()}">
+                </label>
+            </div>
+            <input type="submit" class="btn btn-success" style="margin-bottom: 10px;">
+        </form>
+    </div>
+
+</div>
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

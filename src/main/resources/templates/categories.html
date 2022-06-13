@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Categories</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <h1>Категории</h1>
+    <a th:href="@{/admin/addcategory}" class="btn btn-success">Add</a>
+    <form method="get" action="/categories">
+      <h1>Поиск</h1>
+      <label>Название категории:
+        <input type="text" name="search" placeholder="Название">
+      </label>
+      <input type="submit" value="Найти">
+    </form>
+    <br><br><br>
+
+    <div class="container" th:each="category : ${categories}">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title" th:text="'Id: ' + ${category.id}"></h5>
+              <h3 class="card-text" th:text="'Название: ' + ${category.name}"></h3>
+              <div class="container">
+                <a th:href="@{'/admin/editcategory/' + ${category.id}}" class="btn btn-warning">Edit</a>
+                <a th:href="@{'/admin/deletecategory/' + ${category.id}}" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+</div>
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

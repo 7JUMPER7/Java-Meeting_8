@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+
+    <link th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <h1>Стихи</h1>
+    <a href="/index/random">Выбрать рандомный стих</a>
+    <br>
+
+    <div class="container" th:each="verse : ${verses}">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title" th:text="'Id: ' + ${verse.id}"></h5>
+              <p class="card-text" th:text="${verse.text}"></p>
+            </div>
+        </div>
+        <br>
+    </div>
+
+</div>
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
